@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Add a Gig">
+  <meta name="theme-color" content="#111111">
+  <title>Add a Gig – Ey Up Maiden</title>
+  <link rel="apple-touch-icon" href="../icon.svg">
+  <link rel="stylesheet" href="add.css">
+</head>
+<body>
+
+  <header class="add-header">
+    <h1>Ey Up Maiden</h1>
+    <p>Add a new gig</p>
+  </header>
+
+  <main>
+    <form method="POST"
+          action="https://script.google.com/macros/s/AKfycbzBcqnU-Phr7WAkZduhgrelpt-tAVZ_gEEThNW-Maf5th3lJFmOM_vJu3hK1NlpgpRC/exec"
+          id="gigForm">
+
+      <section class="section" aria-labelledby="section-when-where">
+        <h2 class="section-title" id="section-when-where">When &amp; Where</h2>
+        <div class="card">
+
+          <div class="row">
+            <div class="row-icon" aria-hidden="true">📅</div>
+            <div class="row-body">
+              <label class="row-label" for="dateInput">Date <span class="req" aria-hidden="true">*</span></label>
+              <input type="date" name="date" id="dateInput" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-icon" aria-hidden="true">📍</div>
+            <div class="row-body">
+              <label class="row-label" for="townInput">Town / City <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" name="town" id="townInput" required placeholder="Burnley"
+                     autocomplete="address-level2" autocapitalize="words">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-icon" aria-hidden="true">🎸</div>
+            <div class="row-body">
+              <label class="row-label" for="venueInput">Venue <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" name="venue" id="venueInput" required placeholder="Sanctuary Rock Bar"
+                     autocomplete="off" autocapitalize="words">
+            </div>
+          </div>
+
+          <div class="time-pair">
+            <div class="row">
+              <div class="row-icon" aria-hidden="true">▶</div>
+              <div class="row-body">
+                <label class="row-label" for="startTimeInput">Start</label>
+                <input type="time" name="startTime" id="startTimeInput" value="19:00">
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-icon" aria-hidden="true">■</div>
+              <div class="row-body">
+                <label class="row-label" for="endTimeInput">End</label>
+                <input type="time" name="endTime" id="endTimeInput" value="23:45">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="section-deal">
+        <h2 class="section-title" id="section-deal">Deal</h2>
+        <div class="card">
+          <div class="row">
+            <div class="row-icon" aria-hidden="true">💷</div>
+            <div class="row-body">
+              <label class="row-label" for="feeInput">Agreed Fee</label>
+              <input type="text" name="fee" id="feeInput" placeholder="£400 / Ticketed / Door Split"
+                     autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="section-info">
+        <h2 class="section-title" id="section-info">Info</h2>
+        <div class="card">
+
+          <div class="row">
+            <div class="row-icon" aria-hidden="true">💬</div>
+            <div class="row-body">
+              <label class="row-label" for="commsInput">Comms</label>
+              <input type="text" name="comms" id="commsInput" placeholder="Kurt FB / email / call"
+                     autocomplete="off">
+            </div>
+          </div>
+
+          <div class="row row-notes">
+            <div class="row-icon" aria-hidden="true">📝</div>
+            <div class="row-body">
+              <label class="row-label" for="notesInput">Notes</label>
+              <textarea name="notes" id="notesInput" placeholder="PA needed? Anything else…"></textarea>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="submit-wrap">
+        <button type="submit" id="submitBtn">Add Gig</button>
+      </div>
+
+    </form>
+  </main>
+
+  <script src="add.js"></script>
+</body>
+</html>

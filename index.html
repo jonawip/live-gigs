@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ey Up Maiden – 2026 Gigs</title>
+  <meta name="theme-color" content="#111111">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Ey Up Maiden">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Ey Up Maiden</h1>
+    <p class="subtitle">2026 Gig Schedule</p>
+    <button type="button" id="install-btn" class="install-btn" hidden aria-label="Add to Home Screen">Add to Home Screen</button>
+  </header>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="booked">
+      Booked <span class="count" id="count-booked"></span>
+    </button>
+    <button class="tab-btn" data-tab="available">
+      Available Dates <span class="count" id="count-available"></span>
+    </button>
+  </div>
+  <main>
+    <div id="panel-booked" class="panel active">
+      <div class="container" id="list-booked"></div>
+    </div>
+    <div id="panel-available" class="panel">
+      <div class="container" id="list-available"></div>
+    </div>
+  </main>
+  <footer id="footer"></footer>
+  <script src="app.js"></script>
+</body>
+</html>
