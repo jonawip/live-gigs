@@ -14,9 +14,14 @@
 </head>
 <body>
   <header>
-    <h1>Ey Up Maiden</h1>
+    <h1 class="header-brand">
+      <img class="header-logo" src="icon.svg" alt="Ey Up Maiden" width="384" height="384" decoding="async">
+    </h1>
     <p class="subtitle">2026 Gig Schedule</p>
-    <button type="button" id="install-btn" class="install-btn" hidden aria-label="Add to Home Screen">Add to Home Screen</button>
+    <div class="header-actions">
+      <a href="add/" class="header-btn">Add new Gig</a>
+      <button type="button" id="install-btn" class="header-btn" hidden aria-label="Add to Home Screen">Add to Home Screen</button>
+    </div>
   </header>
   <div class="tabs">
     <button class="tab-btn active" data-tab="booked">

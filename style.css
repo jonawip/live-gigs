@@ -19,37 +19,66 @@ header {
   border-bottom: 1px solid #e5e5e5;
 }
 
-header h1 {
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #111;
+header h1.header-brand {
+  line-height: 0;
+}
+
+.header-logo {
+  display: block;
+  margin-inline: auto;
+  height: clamp(4.5rem, 18vw, 6.5rem);
+  width: auto;
+  max-width: min(22rem, 92vw);
+  object-fit: contain;
 }
 
 .subtitle {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   font-size: 1rem;
   color: #333;
   font-weight: 400;
 }
 
-.install-btn {
-  display: block;
-  margin: 1rem auto 0;
-  padding: 0.5rem 1rem;
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.125rem;
   font-size: 0.875rem;
   font-weight: 600;
+  font-family: inherit;
   color: #111;
   background: transparent;
   border: 1px solid #111;
   border-radius: 0.25rem;
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.15s, color 0.15s;
+  touch-action: manipulation;
 }
 
-.install-btn:hover {
+.header-btn:hover {
   background: #111;
   color: #fff;
+}
+
+.header-btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.header-actions .header-btn[hidden] {
+  display: none;
 }
 
 .tabs {

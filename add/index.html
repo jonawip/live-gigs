@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Add a Gig">
-  <meta name="theme-color" content="#111111">
+  <meta name="theme-color" content="#080808">
   <title>Add a Gig – Ey Up Maiden</title>
   <link rel="apple-touch-icon" href="../icon.svg">
   <link rel="stylesheet" href="add.css">
@@ -15,58 +15,81 @@
 <body>
 
   <header class="add-header">
-    <h1>Ey Up Maiden</h1>
-    <p>Add a new gig</p>
+    <h1 class="add-header__brand">
+      <img class="add-header__logo" src="../icon.svg" alt="Ey Up Maiden" width="384" height="384" decoding="async">
+    </h1>
+    <p class="add-header__tagline">Add a new gig</p>
   </header>
 
   <main>
     <form method="POST"
           action="https://script.google.com/macros/s/AKfycbzBcqnU-Phr7WAkZduhgrelpt-tAVZ_gEEThNW-Maf5th3lJFmOM_vJu3hK1NlpgpRC/exec"
-          id="gigForm">
+          id="gigForm"
+          novalidate>
 
-      <section class="section" aria-labelledby="section-when-where">
-        <h2 class="section-title" id="section-when-where">When &amp; Where</h2>
-        <div class="card">
+      <section class="form-section" aria-labelledby="section-when-where">
+        <h2 class="form-section__title" id="section-when-where">When &amp; Where</h2>
+        <div class="form-card">
 
-          <div class="row">
-            <div class="row-icon" aria-hidden="true">📅</div>
-            <div class="row-body">
-              <label class="row-label" for="dateInput">Date <span class="req" aria-hidden="true">*</span></label>
-              <input type="date" name="date" id="dateInput" required>
+          <div class="field">
+            <div class="field__head">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V10h14v10Zm0-12H5V6h14v2Z"/></svg>
+              </span>
+              <label class="field__label" for="dateInput">Date<span class="field__req" aria-hidden="true">*</span></label>
+            </div>
+            <div class="field__control">
+              <input type="date" name="date" id="dateInput" required enterkeyhint="next">
             </div>
           </div>
 
-          <div class="row">
-            <div class="row-icon" aria-hidden="true">📍</div>
-            <div class="row-body">
-              <label class="row-label" for="townInput">Town / City <span class="req" aria-hidden="true">*</span></label>
+          <div class="field">
+            <div class="field__head">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>
+              </span>
+              <label class="field__label" for="townInput">Town / City<span class="field__req" aria-hidden="true">*</span></label>
+            </div>
+            <div class="field__control">
               <input type="text" name="town" id="townInput" required placeholder="Burnley"
-                     autocomplete="address-level2" autocapitalize="words">
+                     autocomplete="address-level2" autocapitalize="words" enterkeyhint="next">
             </div>
           </div>
 
-          <div class="row">
-            <div class="row-icon" aria-hidden="true">🎸</div>
-            <div class="row-body">
-              <label class="row-label" for="venueInput">Venue <span class="req" aria-hidden="true">*</span></label>
+          <div class="field">
+            <div class="field__head">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l4 2.18V17l7 3.82L19 17v-5.82L21 9.5V17h2V7L12 3Zm0 3.5L18.5 9 12 12.5 5.5 9 12 6.5ZM7 15.5V11.1l5 2.72 5-2.72v4.4l-5 2.72-5-2.72Z"/></svg>
+              </span>
+              <label class="field__label" for="venueInput">Venue<span class="field__req" aria-hidden="true">*</span></label>
+            </div>
+            <div class="field__control">
               <input type="text" name="venue" id="venueInput" required placeholder="Sanctuary Rock Bar"
-                     autocomplete="off" autocapitalize="words">
+                     autocomplete="off" autocapitalize="words" enterkeyhint="next">
             </div>
           </div>
 
-          <div class="time-pair">
-            <div class="row">
-              <div class="row-icon" aria-hidden="true">▶</div>
-              <div class="row-body">
-                <label class="row-label" for="startTimeInput">Start</label>
-                <input type="time" name="startTime" id="startTimeInput" value="19:00">
+          <div class="time-grid">
+            <div class="field">
+              <div class="field__head">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+                </span>
+                <label class="field__label" for="startTimeInput">Start</label>
+              </div>
+              <div class="field__control">
+                <input type="time" name="startTime" id="startTimeInput" value="19:00" enterkeyhint="next">
               </div>
             </div>
-            <div class="row">
-              <div class="row-icon" aria-hidden="true">■</div>
-              <div class="row-body">
-                <label class="row-label" for="endTimeInput">End</label>
-                <input type="time" name="endTime" id="endTimeInput" value="23:45">
+            <div class="field">
+              <div class="field__head">
+                <span class="field__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6V6Z"/></svg>
+                </span>
+                <label class="field__label" for="endTimeInput">End</label>
+              </div>
+              <div class="field__control">
+                <input type="time" name="endTime" id="endTimeInput" value="23:45" enterkeyhint="next">
               </div>
             </div>
           </div>
@@ -74,46 +97,69 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="section-deal">
-        <h2 class="section-title" id="section-deal">Deal</h2>
-        <div class="card">
-          <div class="row">
-            <div class="row-icon" aria-hidden="true">💷</div>
-            <div class="row-body">
-              <label class="row-label" for="feeInput">Agreed Fee</label>
+      <section class="form-section" aria-labelledby="section-deal">
+        <h2 class="form-section__title" id="section-deal">Deal</h2>
+        <div class="form-card">
+          <div class="field">
+            <div class="field__head">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4Z"/></svg>
+              </span>
+              <label class="field__label" for="feeInput">Agreed Fee</label>
+            </div>
+            <div class="field__control">
               <input type="text" name="fee" id="feeInput" placeholder="£400 / Ticketed / Door Split"
-                     autocomplete="off">
+                     autocomplete="off" enterkeyhint="next">
+            </div>
+            <div class="fee-chips" role="group" aria-label="Common fee options">
+              <button type="button" class="fee-chip" data-fee="£400">£400</button>
+              <button type="button" class="fee-chip" data-fee="Ticketed">Ticketed</button>
+              <button type="button" class="fee-chip" data-fee="Door Split">Door Split</button>
+              <button type="button" class="fee-chip" data-fee="TBC">TBC</button>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="section-info">
-        <h2 class="section-title" id="section-info">Info</h2>
-        <div class="card">
+      <section class="form-section" aria-labelledby="section-info">
+        <h2 class="form-section__title" id="section-info">Info</h2>
+        <div class="form-card">
 
-          <div class="row">
-            <div class="row-icon" aria-hidden="true">💬</div>
-            <div class="row-body">
-              <label class="row-label" for="commsInput">Comms</label>
+          <div class="field">
+            <div class="field__head">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2Zm0 14H6l-2 2V4h16v12Z"/></svg>
+              </span>
+              <label class="field__label" for="commsInput">Comms</label>
+            </div>
+            <div class="field__control">
               <input type="text" name="comms" id="commsInput" placeholder="Kurt FB / email / call"
-                     autocomplete="off">
+                     autocomplete="off" enterkeyhint="next">
             </div>
           </div>
 
-          <div class="row row-notes">
-            <div class="row-icon" aria-hidden="true">📝</div>
-            <div class="row-body">
-              <label class="row-label" for="notesInput">Notes</label>
-              <textarea name="notes" id="notesInput" placeholder="PA needed? Anything else…"></textarea>
+          <div class="field field--notes">
+            <div class="field__head">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm2 16H8v-2h8v2Zm0-4H8v-2h8v2Zm-1-5V3.5L18.5 9H15Z"/></svg>
+              </span>
+              <label class="field__label" for="notesInput">Notes</label>
+            </div>
+            <div class="field__control">
+              <textarea name="notes" id="notesInput" placeholder="PA needed? Anything else…" enterkeyhint="done"></textarea>
             </div>
           </div>
 
         </div>
       </section>
 
-      <div class="submit-wrap">
-        <button type="submit" id="submitBtn">Add Gig</button>
+      <div class="submit-bar">
+        <div class="submit-bar__inner">
+          <button type="submit" id="submitBtn">
+            <svg class="submit-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z"/></svg>
+            <span class="submit-text">Add Gig</span>
+          </button>
+        </div>
       </div>
 
     </form>
