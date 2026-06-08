@@ -194,3 +194,106 @@ footer {
   color: #666;
   border-top: 1px solid #e5e5e5;
 }
+
+.available-toolbar {
+  margin-bottom: 1.25rem;
+}
+
+.panel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.15s, color 0.15s;
+}
+
+.panel-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+.panel-btn:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.available-list {
+  list-style: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.available-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  min-height: 3.25rem;
+}
+
+.available-item:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.available-date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+  flex: 1;
+  min-width: 0;
+}
+
+.delete-date-btn {
+  flex-shrink: 0;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #111;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.delete-date-btn:hover:not(:disabled) {
+  border-color: #111;
+}
+
+.delete-date-btn.is-confirming {
+  color: #fff;
+  background: #b00000;
+  border-color: #b00000;
+}
+
+.delete-date-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .available-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.625rem;
+  }
+
+  .delete-date-btn {
+    width: 100%;
+  }
+}
