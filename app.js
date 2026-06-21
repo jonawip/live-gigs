@@ -77,6 +77,22 @@ function sortByDate(gigs) {
   });
 }
 
+function startOfDay(date) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+function isPastGig(dateStr) {
+  const d = parseGigDate(dateStr);
+  if (!d) return false;
+  return startOfDay(d) < startOfDay(new Date());
+}
+
+function filterUpcomingGigs(gigs) {
+  return sortByDate(gigs.filter(g => !isPastGig(g.date)));
+}
+
 function isTbc(fee) {
   return fee && (fee.toLowerCase().includes('tbc') || fee.toLowerCase().includes('ticket'));
 }
@@ -91,7 +107,7 @@ function formatFee(fee) {
   return `Fee: ${fee}`;
 }
 
-function buildBookedTable(gigs) {
+function buildBookedTable(gigs, nextGigDate) {
   const table = document.createElement('table');
   table.className = 'gig-grid';
   table.innerHTML = `
@@ -109,15 +125,28 @@ function buildBookedTable(gigs) {
   `;
   const tbody = table.querySelector('tbody');
   gigs.forEach(g => {
+    const isNextGig = nextGigDate && g.date === nextGigDate;
     const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${formatDate(g.date)}</td>
-      <td>${g.venue ?? ''}</td>
-      <td>${g.town ?? ''}</td>
-      <td>${g.fee ? formatFee(g.fee) : ''}</td>
-      <td>${g.notes ?? ''}</td>
-      <td>${g.comms ?? ''}</td>
-    `;
+    if (isNextGig) row.className = 'next-gig';
+
+    const dateCell = document.createElement('td');
+    if (isNextGig) {
+      const label = document.createElement('span');
+      label.className = 'next-gig-label';
+      label.textContent = 'Next Gig';
+      dateCell.append(label, document.createTextNode(' ' + formatDate(g.date)));
+    } else {
+      dateCell.textContent = formatDate(g.date);
+    }
+
+    row.append(
+      dateCell,
+      Object.assign(document.createElement('td'), { textContent: g.venue ?? '' }),
+      Object.assign(document.createElement('td'), { textContent: g.town ?? '' }),
+      Object.assign(document.createElement('td'), { textContent: g.fee ? formatFee(g.fee) : '' }),
+      Object.assign(document.createElement('td'), { textContent: g.notes ?? '' }),
+      Object.assign(document.createElement('td'), { textContent: g.comms ?? '' })
+    );
     tbody.appendChild(row);
   });
   return table;
@@ -136,7 +165,7 @@ function resetDeleteConfirm() {
 
 function buildAvailablePanel(gigs) {
   const fragment = document.createDocumentFragment();
-  availableGigs = sortByDate(gigs);
+  availableGigs = filterUpcomingGigs(gigs);
 
   const toolbar = document.createElement('div');
   toolbar.className = 'available-toolbar';
@@ -251,8 +280,9 @@ async function loadGigs() {
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
-    const booked = data.gigs.filter(g => g.booked);
-    const available = data.gigs.filter(g => !g.booked);
+    const booked = filterUpcomingGigs(data.gigs.filter(g => g.booked));
+    const available = filterUpcomingGigs(data.gigs.filter(g => !g.booked));
+    const nextGigDate = booked.length > 0 ? booked[0].date : null;
 
     document.getElementById('count-booked').textContent = booked.length;
     document.getElementById('count-available').textContent = available.length;
@@ -261,13 +291,13 @@ async function loadGigs() {
     availableList.innerHTML = '';
 
     if (booked.length === 0) {
-      bookedList.innerHTML = '<p class="error">No booked gigs yet.</p>';
+      bookedList.innerHTML = '<p class="error">No upcoming booked gigs.</p>';
     } else {
-      bookedList.appendChild(buildBookedTable(booked));
+      bookedList.appendChild(buildBookedTable(booked, nextGigDate));
     }
 
     if (available.length === 0) {
-      availableList.innerHTML = '<p class="error">No available dates.</p>';
+      availableList.innerHTML = '<p class="error">No upcoming available dates.</p>';
     } else {
       availableList.appendChild(buildAvailablePanel(available));
     }

@@ -173,6 +173,24 @@ header h1.header-brand {
   color: #111;
 }
 
+.gig-grid tr.next-gig td {
+  background: #f7f7f7;
+}
+
+.next-gig-label {
+  display: inline-block;
+  margin-right: 0.375rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #111;
+  border-radius: 0.25rem;
+  vertical-align: middle;
+}
+
 .loading {
   text-align: center;
   padding: 4rem 2rem;
