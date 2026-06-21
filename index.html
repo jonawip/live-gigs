@@ -2,44 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ey Up Maiden – 2026 Gigs</title>
-  <meta name="theme-color" content="#111111">
+  <meta name="theme-color" content="#080808">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Ey Up Maiden">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon.svg">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1 class="header-brand">
-      <img class="header-logo" src="icon.svg" alt="Ey Up Maiden" width="384" height="384" decoding="async">
-    </h1>
-    <p class="subtitle">2026 Gig Schedule</p>
-    <div class="header-actions">
-      <a href="add/" class="header-btn">Add new Gig</a>
-      <button type="button" id="install-btn" class="header-btn" hidden aria-label="Add to Home Screen">Add to Home Screen</button>
+  <div class="app">
+    <div class="app-top">
+    <header>
+      <h1 class="header-brand">
+        <img class="header-logo" src="icon.svg" alt="Ey Up Maiden" width="384" height="384" decoding="async">
+      </h1>
+      <p class="subtitle">2026 Gig Schedule</p>
+      <div class="header-actions">
+        <a href="add/" class="header-btn">Add new Gig</a>
+        <button type="button" id="install-btn" class="header-btn" hidden aria-label="Add to Home Screen">Add to Home Screen</button>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="tabs" role="tablist" aria-label="Gig schedule">
+        <button type="button" class="tab-btn active" data-tab="booked" role="tab" aria-selected="true" aria-controls="panel-booked" id="tab-booked">
+          Booked <span class="count" id="count-booked"></span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="available" role="tab" aria-selected="false" aria-controls="panel-available" id="tab-available">
+          Available <span class="count" id="count-available"></span>
+        </button>
+      </div>
     </div>
-  </header>
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="booked">
-      Booked <span class="count" id="count-booked"></span>
-    </button>
-    <button class="tab-btn" data-tab="available">
-      Available Dates <span class="count" id="count-available"></span>
-    </button>
+    </div>
+
+    <main>
+      <section id="panel-booked" class="panel active" role="tabpanel" aria-labelledby="tab-booked">
+        <div class="gig-list" id="list-booked"></div>
+      </section>
+      <section id="panel-available" class="panel" role="tabpanel" aria-labelledby="tab-available" hidden>
+        <div id="list-available"></div>
+      </section>
+    </main>
+
+    <footer id="footer"></footer>
   </div>
-  <main>
-    <div id="panel-booked" class="panel active">
-      <div class="container" id="list-booked"></div>
-    </div>
-    <div id="panel-available" class="panel">
-      <div class="container" id="list-available"></div>
-    </div>
-  </main>
-  <footer id="footer"></footer>
   <script src="app.js"></script>
 </body>
 </html>
